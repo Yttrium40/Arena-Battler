@@ -1,0 +1,34 @@
+~cpp files~
+
+~~attributes~~
+
+~mutable~
+
+level
+
+strength - affects damage
+agility - affects whether you act first, dodge chance
+endurance
+perception - affects chance to hit, ranged weapon damage
+focus - primary way of increasing magical ability
+intelligence - mostly allows learning new spells, small effect on magic ability
+
+~derived~
+
+health
+    high effect: endurance
+    medium effect: level
+stamina
+    high effect: endurance
+mana
+    high effect: focus
+    low effect: intelligence
+will - can be used to recover mana or stamina during fights, and puts a cap on maximum recovery between fights
+    medium effect: endurance
+    medium effect: focus
+
+base accuracy
+base speed
+base melee damage
+base ranged damage
+base magic ability
