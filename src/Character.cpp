@@ -1,7 +1,7 @@
 # include "Character.h"
 
-Character::Character(std::string &name)
-: this->name { name }
+Character::Character(std::string p_name)
+: name { p_name }
 {
 }
 
@@ -53,11 +53,14 @@ uint8_t Character::increaseSpeed()
     return ++speed;
 }
 
-const std::string & Character::getName() const { return name; }
-int32_t Character::getStamina() const          { return stamina; }
-int32_t Character::getMana() const             { return mana; }
-int32_t Character::getWill() const             { return will; }
-uint16_t Character::getPhysique() const        { return physique; }
-uint16_t Character::getFocus() const           { return focus; }
-uint16_t Character::getEndurance() const       { return endurance; }
-uint8_t Character::getSpeed() const            { return speed; }
+const std::string & Character::getName() const    { return name; }
+const std::string & Character::getRace() const    { return race; }
+const std::string & Character::getWeapon() const  { return weapon; }
+const std::string & Character::getElement() const { return element; }
+int32_t Character::getStamina() const             { return stamina; }
+int32_t Character::getMana() const                { return mana; }
+int32_t Character::getWill() const                { return will; }
+uint16_t Character::getPhysique() const           { return physique; }
+uint16_t Character::getFocus() const              { return focus; }
+uint16_t Character::getEndurance() const          { return endurance; }
+uint8_t Character::getSpeed() const               { return speed; }

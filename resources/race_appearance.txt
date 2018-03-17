@@ -1,0 +1,15 @@
+!human
+
+TESTHUMAN
+
+!orc
+
+TESTORC
+
+!cat-folk
+
+TESTCAT
+
+!lizard-folk
+
+TESTLIZARD

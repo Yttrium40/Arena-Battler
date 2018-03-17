@@ -3,11 +3,15 @@
 
 # include <string>
 # include <cstdint>
+# include <cassert>
 
 class Character
 {
 protected:
     std::string name;
+    std::string race;
+    std::string weapon;
+    std::string element;
 
     int32_t stamina = 5;
     int32_t mana    = 5;
@@ -19,7 +23,7 @@ protected:
     uint8_t speed      = 1;
 
 public:
-    Character(std::string &name);
+    Character(std::string p_name);
 
     // lower stat by damage and return new value of stat
     int32_t damageStamina(int damage);
@@ -41,6 +45,9 @@ public:
     uint8_t increaseSpeed();
 
     const std::string & getName() const;
+    const std::string & getRace() const;
+    const std::string & getWeapon() const;
+    const std::string & getElement() const;
     int32_t getStamina() const;
     int32_t getMana() const;
     int32_t getWill() const;
