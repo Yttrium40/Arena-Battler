@@ -1,15 +1,20 @@
 !human
 
-TESTHUMAN
+tall, fair-skinned human
+short, ashen-skinned human
+handsome, olive-skinned human
 
 !orc
 
 TESTORC
+TESTORC2
 
 !cat-folk
 
-TESTCAT
+lean, black-furred, panther-like cat-folk
+tall, sandy cat-folk
 
 !lizard-folk
 
 TESTLIZARD
+TESTLIZARD2

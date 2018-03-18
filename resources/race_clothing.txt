@@ -1,15 +1,20 @@
 !human
 
-TESTHUMAN
+common clothing
+monk's robes
+a full set of plate armor
 
 !orc
 
 TESTORC
+TESTORC2
 
 !cat-folk
 
-TESTCAT
+bits of old leather armor
+a fine suit of brass chainmail
 
 !lizard-folk
 
 TESTLIZARD
+TESTLIZARD2

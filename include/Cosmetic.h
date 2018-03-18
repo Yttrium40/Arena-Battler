@@ -33,7 +33,7 @@ private:
     //     bow,
     //     crossbow,
     //     spear,
-    //     scimitar,
+    //     curvedsword,
     //     staff,
     // };
     // enum class Element
@@ -73,7 +73,7 @@ private:
     //     "bow",
     //     "crossbow",
     //     "spear",
-    //     "scimitar",
+    //     "curvedsword",
     //     "staff"
     // }
     // static const std::vector<std::string> elementString =

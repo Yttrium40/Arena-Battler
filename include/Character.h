@@ -5,13 +5,20 @@
 # include <cstdint>
 # include <cassert>
 
+class LevelUp;
+class CharacterCreation;
+
 class Character
 {
+    friend class LevelUp;
+    friend class CharacterCreation;
+
 protected:
-    std::string name    = "";
-    std::string race    = "";
-    std::string weapon  = "";
-    std::string element = "";
+    std::string name        = "";
+    std::string race        = "";
+    std::string weapon      = "";
+    std::string element     = "";
+    std::string description = "";
 
     int32_t stamina = 5;
     int32_t mana    = 5;
@@ -37,17 +44,11 @@ public:
     // recover all derived stats to full, including will
     void recoverFull();
 
-    // increase mutable stat. Should only be used during level up and should be
-    // followed by calling recoverFull() to correct derived stats
-    uint16_t increasePhysique();
-    uint16_t increaseFocus();
-    uint16_t increaseEndurance();
-    uint16_t increaseSpeed();
-
     const std::string & getName() const;
     const std::string & getRace() const;
     const std::string & getWeapon() const;
     const std::string & getElement() const;
+    const std::string & getDescription() const;
     int32_t getStamina() const;
     int32_t getMana() const;
     int32_t getWill() const;

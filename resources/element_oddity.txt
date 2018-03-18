@@ -1,51 +1,60 @@
 !fire
 
-TESTFIRE
+Their eyes burn with the ferocity of a disciple of fire
+With every breath, a small puff of hot steam escapes their nostrils
 
 !air
 
-TESTAIR
+On their back lie two feathery wings that can extend to an impressive length
 
 !water
 
-TESTWATER
+On their neck is a set of nonfunctioning gills
+In place of hands and arms, they have long, slippery tentacles like some creature of the deep
 
 !earth
 
 TESTEARTH
+TESTEARTH2
 
 !metal
 
-TESTMETAL
+Their teeth are made of sharpened steel
 
 !sound
 
-TESTSOUND
+They have unusually large ears that pick up on any sound around them
 
 !light
 
 TESTLIGHT
+TESTLIGHT2
 
 !dark
 
 TESTDARK
+TESTDARK2
 
 !chaos
 
 TESTCHAOS
+TESTCHAOS2
 
 !mind
 
 TESTMIND
+TESTMIND2
 
 !blood
 
 TESTBLOOD
+TESTBLOOD2
 
 !nature
 
 TESTNATURE
+TESTNATURE2
 
 !time
 
-TESTTIME
+They look unusually young for their age, hinting at the use of time manipulation

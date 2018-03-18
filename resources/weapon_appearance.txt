@@ -1,43 +1,52 @@
 !unarmed
 
-TESTUNARMED
+nothing but their deadly fists, honed into weapons by years of training
 
 !dagger
 
-TESTDAGGER
+a knife carved from the tooth of some ancient creature
+a sinister, curved dagger that drips poison
 
 !shortsword
 
 TESTSHORTSWORD
+TESTSHORTSWORD2
 
 !longsword
 
-TESTLONGSWORD
+a solid, well-maintained blade that has served them well throughout the years
+the mythical sword of the gods, Cloudrender
 
 !rapier
 
-TESTRAPIER
+an expensive, jewel-encrusted rapier
+an old, worn rapier passed down through generations of duelists
 
 !mace
 
 TESTMACE
+TESTMACE2
 
 !bow
 
-TESTBOW
+a polished longbow as tall as they are
 
 !crossbow
 
-TESTCROSSBOW
+a massive, steel-reinforced arbalest
+a light crossbow that can be fired with one hand
 
 !spear
 
 TESTSPEAR
+TESTSPEAR2
 
-!scimitar
+!curvedsword
 
 TESTSCIMITAR
+TESTSCIMITAR2
 
 !staff
 
 TESTSTAFF
+TESTSTAFF2
