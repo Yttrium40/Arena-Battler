@@ -8,10 +8,10 @@
 class Character
 {
 protected:
-    std::string name;
-    std::string race;
-    std::string weapon;
-    std::string element;
+    std::string name    = "";
+    std::string race    = "";
+    std::string weapon  = "";
+    std::string element = "";
 
     int32_t stamina = 5;
     int32_t mana    = 5;
@@ -20,7 +20,7 @@ protected:
     uint16_t physique  = 0;
     uint16_t focus     = 0;
     uint16_t endurance = 0;
-    uint8_t speed      = 1;
+    uint16_t speed     = 1;
 
 public:
     Character(std::string p_name);
@@ -42,7 +42,7 @@ public:
     uint16_t increasePhysique();
     uint16_t increaseFocus();
     uint16_t increaseEndurance();
-    uint8_t increaseSpeed();
+    uint16_t increaseSpeed();
 
     const std::string & getName() const;
     const std::string & getRace() const;
@@ -54,7 +54,7 @@ public:
     uint16_t getPhysique() const;
     uint16_t getFocus() const;
     uint16_t getEndurance() const;
-    uint8_t getSpeed() const;
+    uint16_t getSpeed() const;
 };
 
 # endif

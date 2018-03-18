@@ -47,7 +47,7 @@ uint16_t Character::increaseEndurance()
 {
     return ++endurance;
 }
-uint8_t Character::increaseSpeed()
+uint16_t Character::increaseSpeed()
 {
     assert(speed < 3);
     return ++speed;
@@ -63,4 +63,4 @@ int32_t Character::getWill() const                { return will; }
 uint16_t Character::getPhysique() const           { return physique; }
 uint16_t Character::getFocus() const              { return focus; }
 uint16_t Character::getEndurance() const          { return endurance; }
-uint8_t Character::getSpeed() const               { return speed; }
+uint16_t Character::getSpeed() const              { return speed; }

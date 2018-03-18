@@ -5,9 +5,12 @@
 
 int main()
 {
-    std::string bit { "Joe" };
-    Character myCharacter { bit };
-    std::cout << myCharacter.getName();
+    Character myCharacter { "bit" };
+    std::cout << myCharacter.getName() << myCharacter.getSpeed();
+    myCharacter.increaseSpeed();
+    std::cout << myCharacter.getSpeed() << '\n'; //should print bit12
 
+    int whoop;
+    std::cin >> whoop;
     return 0;
 }

@@ -7,12 +7,13 @@
 # include <random>
 # include <chrono>
 # include <vector>
+# include <utility>
 # include "Character.h"
 
 class Cosmetic
 {
 private:
-    static const std::mt19937 rng;
+    static std::mt19937 rng;
 
     // enum class Race
     // {
@@ -94,12 +95,12 @@ private:
 
     // these maps contain std::string descriptions that are randomly chosen for
     // each string key
-    static std::map<std::string &, std::vector<std::string>> raceAppearance;
-    static std::map<std::string &, std::vector<std::string>> raceClothing;
-    static std::map<std::string &, std::vector<std::string>> weaponAppearance;
-    static std::map<std::string &, std::vector<std::string>> weaponAttack;
-    static std::map<std::string &, std::vector<std::string>> elementOddity;
-    static std::map<std::string &, std::vector<std::string>> elementAttack;
+    static std::map<std::string, std::vector<std::string>> raceAppearance;
+    static std::map<std::string, std::vector<std::string>> raceClothing;
+    static std::map<std::string, std::vector<std::string>> weaponAppearance;
+    static std::map<std::string, std::vector<std::string>> weaponAttack;
+    static std::map<std::string, std::vector<std::string>> elementOddity;
+    static std::map<std::string, std::vector<std::string>> elementAttack;
 
     void populateMaps();
 
@@ -108,7 +109,7 @@ private:
 public:
     Cosmetic();
 
-    const std::string & getRandomizedDescription(Character &character) const;
+    std::string getRandomizedDescription(const Character &character) const;
 };
 
 #endif
