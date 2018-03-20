@@ -20,6 +20,7 @@ TESTEARTH2
 !metal
 
 Their teeth are made of sharpened steel
+Parts of their body are covered by thick steel scales
 
 !sound
 
@@ -32,8 +33,7 @@ TESTLIGHT2
 
 !dark
 
-TESTDARK
-TESTDARK2
+Their shadow is darker and longer than it should be
 
 !chaos
 
@@ -42,13 +42,11 @@ TESTCHAOS2
 
 !mind
 
-TESTMIND
-TESTMIND2
+On their face is a depiction of an eye drawn in magically-infused face paint
 
 !blood
 
-TESTBLOOD
-TESTBLOOD2
+Their eyes are permanently bloodshot
 
 !nature
 

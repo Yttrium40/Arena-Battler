@@ -112,4 +112,4 @@ public:
     std::string getRandomizedDescription(const Character &character) const;
 };
 
-#endif
+# endif

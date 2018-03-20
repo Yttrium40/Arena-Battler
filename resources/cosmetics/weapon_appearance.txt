@@ -1,6 +1,6 @@
 !unarmed
 
-nothing but their deadly fists, honed into weapons by years of training
+nothing but their deadly body, honed into a weapon by years of training
 
 !dagger
 
@@ -43,10 +43,9 @@ TESTSPEAR2
 
 !curvedsword
 
-TESTSCIMITAR
-TESTSCIMITAR2
+an old, rusted cutlass with a serrated blade
 
 !staff
 
-TESTSTAFF
-TESTSTAFF2
+a black, withered wooden staff carved from the wood of a cursed tree
+a long, exquisite gold staff once held by an ancient mage-king

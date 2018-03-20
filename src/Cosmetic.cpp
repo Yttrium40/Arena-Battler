@@ -46,7 +46,7 @@ void Cosmetic::populateMaps()
         {
             currentMap = &elementAttack;
         }
-        ifs.open("../resources/" + file + ".txt", std::ifstream::in);
+        ifs.open("../resources/cosmetics/" + file + ".txt", std::ifstream::in);
         std::string head;
         std::string line;
         while (std::getline(ifs, line))
