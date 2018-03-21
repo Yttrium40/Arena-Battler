@@ -6,24 +6,24 @@
 # include <memory>
 # include "global.h"
 
-class Button
+class Button : public sf::Drawable
 {
 private:
     std::shared_ptr<sf::Texture> background;
     std::shared_ptr<sf::Texture> backgroundClicked = nullptr;
     bool clicked = false;
 
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+
 public:
     sf::RectangleShape box;
-    sf::Text text;
 
-    Button(sf::RectangleShape p_box, sf::Text p_text,
+    Button(sf::RectangleShape p_box,
         std::shared_ptr<sf::Texture> p_backgroundClicked = nullptr);
 
-    Button(sf::Vector2f p_position, sf::Vector2f p_size, std::string p_text,
-        std::shared_ptr<sf::Texture> p_background, std::shared_ptr<sf::Texture> p_backgroundClicked = nullptr);
-
-    void draw(sf::RenderWindow &window) const;
+    Button(sf::Vector2f p_position, sf::Vector2f p_size,
+        std::shared_ptr<sf::Texture> p_background,
+        std::shared_ptr<sf::Texture> p_backgroundClicked = nullptr);
 
     bool containsClick(const sf::Event &event) const;
 

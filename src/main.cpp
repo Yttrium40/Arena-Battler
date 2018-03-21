@@ -12,23 +12,18 @@
 
 sf::Font globalFont;
 unsigned int globalFontSize{ 16 };
-sf::Vector2f globalWindowSize{ 500, 500 };
-sf::Color globalWindowBackgroundColor{ 50, 50, 50, 255 };
+sf::Vector2f globalWindowSize{ 800, 600 };
 
 int main()
 {
-    globalFont.loadFromFile("../resources/fonts/cambria.ttc");
+    globalFont.loadFromFile("../resources/fonts/cambriab.ttf");
 
     sf::Texture texture;
-    texture.loadFromFile("../resources/images/Blue.png");
+    texture.loadFromFile("../resources/images/NewGameButton.png");
     auto texture_ptr = std::make_shared<sf::Texture>(texture);
 
-    sf::Texture otherTexture;
-    otherTexture.loadFromFile("../resources/images/PolarizersZoom.png");
-    auto otherTexture_ptr = std::make_shared<sf::Texture>(otherTexture);
-
-    sf::RenderWindow mainWindow(sf::VideoMode(800, 600), "Arena Battler");
-    Button shape { { 100, 100 }, { 400, 400 }, "Testing", texture_ptr, otherTexture_ptr };
+    sf::RenderWindow mainWindow { sf::VideoMode { globalWindowSize.x, globalWindowSize.y }, "Arena Battler" };
+    Button shape { { 100, 100 }, { 200, 100 }, texture_ptr };
 
     while (mainWindow.isOpen())
     {
@@ -50,7 +45,7 @@ int main()
         }
 
         mainWindow.clear();
-        shape.draw(mainWindow);
+        mainWindow.draw(shape);
         mainWindow.display();
     }
 

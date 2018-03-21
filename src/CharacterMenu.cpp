@@ -9,18 +9,18 @@ CharacterMenu::CharacterMenu(std::vector<Button> p_buttons, std::vector<sf::Text
 }
 
 // this will be different depending on whether the adjuster has points left
-void CharacterMenu::draw(sf::RenderWindow &window) const
+void CharacterMenu::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    sf::RectangleShape back { sf::Vector2f(window.getSize()) };
+    sf::RectangleShape back { sf::Vector2f(target.getSize()) };
     back.setTexture(background.get());
-    window.draw(back);
+    target.draw(back, states);
     for (const Button &button : buttons)
     {
-        button.draw(window);
+        target.draw(button, states);
     }
     for (const sf::Text &text : texts)
     {
-        window.draw(text);
+        target.draw(text, states);
     }
 }
 

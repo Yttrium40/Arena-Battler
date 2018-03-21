@@ -6,17 +6,17 @@ Scene::Scene(std::vector<Button> p_buttons, std::vector<sf::Text> p_texts,
 {
 }
 
-void Scene::draw(sf::RenderWindow &window) const
+void Scene::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-    sf::RectangleShape back { sf::Vector2f(window.getSize()) };
+    sf::RectangleShape back { sf::Vector2f(target.getSize()) };
     back.setTexture(background.get());
-    window.draw(back);
+    target.draw(back, states);
     for (const Button &button : buttons)
     {
-        button.draw(window);
+        target.draw(button, states);
     }
     for (const sf::Text &text : texts)
     {
-        window.draw(text);
+        target.draw(text, states);
     }
 }

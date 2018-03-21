@@ -6,6 +6,5 @@
 extern sf::Font globalFont;
 extern unsigned int globalFontSize;
 extern sf::Vector2f globalWindowSize;
-extern sf::Color globalWindowBackgroundColor;
 
 # endif
