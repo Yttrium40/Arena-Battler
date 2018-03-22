@@ -20,6 +20,8 @@ protected:
 public:
     Scene(std::vector<Button> p_buttons, std::vector<sf::Text> p_texts,
         std::shared_ptr<sf::Texture> p_background);
+
+    bool getClickedButton(sf::Event &event, Button *&foundButton);
 };
 
 # endif

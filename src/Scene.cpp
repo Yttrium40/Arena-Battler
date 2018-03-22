@@ -20,3 +20,24 @@ void Scene::draw(sf::RenderTarget &target, sf::RenderStates states) const
         target.draw(text, states);
     }
 }
+
+bool Scene::getClickedButton(sf::Event &event, Button *&foundButton)
+{
+    for (Button &button : buttons)
+    {
+        if (button.containsClick(event))
+        {
+            foundButton = &button;
+            return true;
+        }
+    }
+    // for (int i = 0; i < buttons.size(); ++i)
+    // {
+    //     if (buttons[i].containsClick(event))
+    //     {
+    //         foundButton = &buttons[i];
+    //         return true;
+    //     }
+    // }
+    return false;
+}

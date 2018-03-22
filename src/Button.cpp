@@ -1,14 +1,15 @@
 # include "Button.h"
 
-Button::Button(sf::RectangleShape p_box, std::shared_ptr<sf::Texture> p_backgroundClicked)
-: box { p_box }, background { std::make_shared<sf::Texture>(*p_box.getTexture()) },
+Button::Button(ButtonEnum p_id, sf::RectangleShape p_box,
+    std::shared_ptr<sf::Texture> p_backgroundClicked)
+: id { p_id }, box { p_box }, background { std::make_shared<sf::Texture>(*p_box.getTexture()) },
     backgroundClicked { p_backgroundClicked }
 {
 }
 
-Button::Button(sf::Vector2f p_position, sf::Vector2f p_size,
+Button::Button(ButtonEnum p_id, sf::Vector2f p_position, sf::Vector2f p_size,
     std::shared_ptr<sf::Texture> p_background, std::shared_ptr<sf::Texture> p_backgroundClicked)
-: box { p_size }, background { p_background }, backgroundClicked { p_backgroundClicked }
+: id { p_id }, box { p_size }, background { p_background }, backgroundClicked { p_backgroundClicked }
 {
     box.setPosition(p_position);
     box.setTexture(background.get());
@@ -49,4 +50,5 @@ void Button::setBackground(std::shared_ptr<sf::Texture> background)
 void Button::setBackgroundClicked(std::shared_ptr<sf::Texture> backgroundClicked)
     { this->backgroundClicked = backgroundClicked; }
 
-bool Button::isClicked() const { return clicked; }
+bool Button::isClicked() const   { return clicked; }
+ButtonEnum Button::getId() const { return id; }

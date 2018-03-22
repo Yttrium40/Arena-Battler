@@ -6,46 +6,62 @@
 # include "Scene.h"
 # include "CharacterMenu.h"
 # include "Button.h"
+# include "ButtonEnum.h"
 # include <iostream>
 # include <string>
+# include <memory>
 # include <SFML/Graphics.hpp>
 
 sf::Font globalFont;
-unsigned int globalFontSize{ 16 };
-sf::Vector2f globalWindowSize{ 800, 600 };
+unsigned int globalFontSize { 16 };
+sf::Vector2f globalWindowSize { 1000, 750 };
+sf::Vector2f globalButtonSize { 200, 50 };
 
 int main()
 {
     globalFont.loadFromFile("../resources/fonts/cambriab.ttf");
 
-    sf::Texture texture;
-    texture.loadFromFile("../resources/images/NewGameButton.png");
-    auto texture_ptr = std::make_shared<sf::Texture>(texture);
-
     sf::RenderWindow mainWindow { sf::VideoMode { globalWindowSize.x, globalWindowSize.y }, "Arena Battler" };
-    Button shape { { 100, 100 }, { 200, 100 }, texture_ptr };
 
+
+    sf::Texture newGameTexture;
+    newGameTexture.loadFromFile("../resources/images/NewGameButton.png");
+    auto newGameTexture_ptr = std::make_shared<sf::Texture>(newGameTexture);
+
+    sf::Texture newGameClickedTexture;
+    newGameClickedTexture.loadFromFile("../resources/images/NewGameButtonClicked.png");
+    auto newGameClickedTexture_ptr = std::make_shared<sf::Texture>(newGameClickedTexture);
+
+    Button newGameButton { ButtonEnum::NewGame, { globalWindowSize.x/2 - globalButtonSize.x, globalWindowSize.y/8 }, globalButtonSize, newGameTexture_ptr, newGameClickedTexture_ptr };
+    Scene mainMenu { { newGameButton }, {}, newGameTexture_ptr };
+
+
+    Scene *currentScene = &mainMenu;
+    Button *currentButton;
     while (mainWindow.isOpen())
     {
         sf::Event event;
-        while (mainWindow.pollEvent(event))
+        while (currentScene == &mainMenu && mainWindow.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
+            {
                 mainWindow.close();
-
+            }
             if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Left))
-                if (shape.containsClick(event))
+            {
+                if ((*currentScene).getClickedButton(event, currentButton))
                 {
                     std::cout << "Button pressed!\n";
-                    shape.setClicked();
+                    (*currentButton).setClicked();
                 }
-
+            }
             if ((event.type == sf::Event::MouseButtonReleased) && (event.mouseButton.button == sf::Mouse::Left))
-                shape.setUnclicked();
+            {
+                (*currentButton).setUnclicked();
+            }
         }
-
         mainWindow.clear();
-        mainWindow.draw(shape);
+        mainWindow.draw(*currentScene);
         mainWindow.display();
     }
 
