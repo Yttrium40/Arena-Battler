@@ -31,13 +31,5 @@ bool Scene::getClickedButton(sf::Event &event, Button *&foundButton)
             return true;
         }
     }
-    // for (int i = 0; i < buttons.size(); ++i)
-    // {
-    //     if (buttons[i].containsClick(event))
-    //     {
-    //         foundButton = &buttons[i];
-    //         return true;
-    //     }
-    // }
     return false;
 }
