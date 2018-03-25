@@ -16,12 +16,13 @@ sf::Font globalFont;
 unsigned int globalFontSize { 16 };
 sf::Vector2f globalWindowSize { 1000, 750 };
 sf::Vector2f globalButtonSize { 200, 50 };
+sf::Vector2f globalSquareButtonSize { 50, 50 };
 
 int main()
 {
     globalFont.loadFromFile("../resources/fonts/cambriab.ttf");
 
-    sf::RenderWindow mainWindow { sf::VideoMode { globalWindowSize.x, globalWindowSize.y }, "Arena Battler" };
+    sf::RenderWindow mainWindow { sf::VideoMode { globalWindowSize.x, globalWindowSize.y }, "Arena Battler", sf::Style::Titlebar | sf::Style::Close };
 
     sf::Texture redBackgroundTexture;
     redBackgroundTexture.loadFromFile("../resources/images/RedBackground.png");
@@ -37,8 +38,8 @@ int main()
     newGameClickedTexture.loadFromFile("../resources/images/NewGameButtonClicked.png");
     auto newGameClickedTexture_ptr = std::make_shared<sf::Texture>(newGameClickedTexture);
 
-    Button newGameButton { ButtonEnum::NewGame, { 200, 500 }, globalButtonSize, newGameTexture_ptr, newGameClickedTexture_ptr };
-    Scene mainMenu { { newGameButton }, {}, redBackgroundTexture_ptr };
+    Button newGameButton { ButtonEnum::NewGame, { globalWindowSize.x/2 - globalButtonSize.x/2, 0 }, globalButtonSize, newGameTexture_ptr, newGameClickedTexture_ptr };
+    Scene mainMenu       { { newGameButton }, {}, redBackgroundTexture_ptr };
 
 
     // Character Menu
@@ -66,8 +67,13 @@ int main()
     minusTexture.loadFromFile("../resources/images/MinusButton.png");
     auto minusTexture_ptr = std::make_shared<sf::Texture>(minusTexture);
 
-    Button mainMenuButton { ButtonEnum::MainMenu, { 800, 500 }, globalButtonSize, mainMenuTexture_ptr, mainMenuClickedTexture_ptr };
-    Scene characterMenu { { mainMenuButton }, {}, redBackgroundTexture_ptr };
+    Button mainMenuButton      { ButtonEnum::MainMenu, { globalWindowSize.x - globalButtonSize.x, 0 }, globalButtonSize, mainMenuTexture_ptr, mainMenuClickedTexture_ptr };
+    //sf::Text nameText
+    Button minusPhysiqueButton { ButtonEnum::MinusPhysique, { 0, 0 }, globalSquareButtonSize, minusTexture_ptr };
+    Button plusPhysiqueButton  { ButtonEnum::PlusPhysique, { globalSquareButtonSize.x, 0 }, globalSquareButtonSize, plusTexture_ptr };
+    Button minusFocusButton    { ButtonEnum::MinusFocus, { 0, globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
+    Button plusFocusButton     { ButtonEnum::PlusFocus, { globalSquareButtonSize.x, globalSquareButtonSize.y }, globalSquareButtonSize, plusTexture_ptr };
+    Scene characterMenu        { { mainMenuButton, minusPhysiqueButton, plusPhysiqueButton, minusFocusButton, plusFocusButton }, {}, redBackgroundTexture_ptr };
 
 
     Scene *currentScene = &mainMenu;

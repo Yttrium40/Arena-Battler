@@ -7,5 +7,6 @@ extern sf::Font globalFont;
 extern unsigned int globalFontSize;
 extern sf::Vector2f globalWindowSize;
 extern sf::Vector2f globalButtonSize;
+extern sf::Vector2f globalSquareButtonSize;
 
 # endif
