@@ -7,6 +7,7 @@
 # include "CharacterMenu.h"
 # include "Button.h"
 # include "ButtonEnum.h"
+# include "GameState.h"
 # include <iostream>
 # include <string>
 # include <memory>
@@ -103,16 +104,12 @@ int main()
                                { nameText, physiqueText, focusText, enduranceText, speedText }, redBackgroundTexture_ptr };
 
 
-    Scene *currentScene = &mainMenu;
-    Button *currentButton = nullptr;
-    CharacterCreation creator;
-    LevelUp leveler;
-    Character player;
-    Character opponent;
+    GameState state;
+    state.setScene(mainMenu);
     while (mainWindow.isOpen())
     {
         sf::Event event;
-        while (currentScene == &mainMenu && mainWindow.pollEvent(event))
+        while (state.getScene() == &mainMenu && mainWindow.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
             {
@@ -120,29 +117,29 @@ int main()
             }
             if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Left))
             {
-                if ((*currentScene).getClickedButton(event, currentButton))
+                if ((*state.getScene()).getClickedButton(event, state.getButtonRef()))
                 {
                     std::cout << "Button pressed!\n";
-                    (*currentButton).setClicked();
+                    (*state.getButton()).setClicked();
                 }
             }
             if ((event.type == sf::Event::MouseButtonReleased) && (event.mouseButton.button == sf::Mouse::Left))
             {
-                if (currentButton != nullptr)
+                if (state.getButton() != nullptr)
                 {
-                    (*currentButton).setUnclicked();
-                    switch ((*currentButton).getId())
+                    (*state.getButton()).setUnclicked();
+                    switch ((*state.getButton()).getId())
                     {
                         case ButtonEnum::NewGame:
-                            currentScene = &characterMenu;
-                            player { "DEFAULT NAME" };
-                            creator { player, 5 };
+                            state.setScene(characterMenu);
+                            state.setPlayer({ "DEFAULT NAME" });
+                            state.setCreator({ *state.getPlayer(), 5 });
                             break;
                     }
                 }
             }
         }
-        while (currentScene == &characterMenu && mainWindow.pollEvent(event))
+        while (state.getScene() == &characterMenu && mainWindow.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
             {
@@ -150,49 +147,49 @@ int main()
             }
             if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Left))
             {
-                if ((*currentScene).getClickedButton(event, currentButton))
+                if ((*state.getScene()).getClickedButton(event, state.getButtonRef()))
                 {
                     std::cout << "Button pressed!\n";
-                    (*currentButton).setClicked();
+                    (*state.getButton()).setClicked();
                 }
             }
             if ((event.type == sf::Event::MouseButtonReleased) && (event.mouseButton.button == sf::Mouse::Left))
             {
-                (*currentButton).setUnclicked();
-                switch ((*currentButton).getId())
+                (*state.getButton()).setUnclicked();
+                switch ((*state.getButton()).getId())
                 {
                     case ButtonEnum::MainMenu:
-                        currentScene = &mainMenu;
+                        state.setScene(mainMenu);
                         break;
                     case ButtonEnum::PlusPhysique:
-                        creator.increasePhysique();
+                        (*state.getCreator()).increasePhysique();
                         break;
                     case ButtonEnum::PlusFocus:
-                        creator.increaseFocus();
+                        (*state.getCreator()).increaseFocus();
                         break;
                     case ButtonEnum::PlusEndurance:
-                        creator.increaseEndurance();
+                        (*state.getCreator()).increaseEndurance();
                         break;
                     case ButtonEnum::PlusSpeed:
-                        creator.increaseSpeed();
+                        (*state.getCreator()).increaseSpeed();
                         break;
                     case ButtonEnum::MinusPhysique:
-                        creator.decreasePhysique();
+                        (*state.getCreator()).decreasePhysique();
                         break;
                     case ButtonEnum::MinusFocus:
-                        creator.decreaseFocus();
+                        (*state.getCreator()).decreaseFocus();
                         break;
                     case ButtonEnum::MinusEndurance:
-                        creator.decreaseEndurance();
+                        (*state.getCreator()).decreaseEndurance();
                         break;
                     case ButtonEnum::MinusSpeed:
-                        creator.decreaseSpeed();
+                        (*state.getCreator()).decreaseSpeed();
                         break;
                 }
             }
         }
         mainWindow.clear();
-        mainWindow.draw(*currentScene);
+        mainWindow.draw(*state.getScene());
         mainWindow.display();
     }
 
