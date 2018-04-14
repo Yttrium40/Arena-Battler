@@ -68,16 +68,47 @@ int main()
     auto minusTexture_ptr = std::make_shared<sf::Texture>(minusTexture);
 
     Button mainMenuButton      { ButtonEnum::MainMenu, { globalWindowSize.x - globalButtonSize.x, 0 }, globalButtonSize, mainMenuTexture_ptr, mainMenuClickedTexture_ptr };
-    //sf::Text nameText
-    Button minusPhysiqueButton { ButtonEnum::MinusPhysique, { 0, 0 }, globalSquareButtonSize, minusTexture_ptr };
-    Button plusPhysiqueButton  { ButtonEnum::PlusPhysique, { globalSquareButtonSize.x, 0 }, globalSquareButtonSize, plusTexture_ptr };
-    Button minusFocusButton    { ButtonEnum::MinusFocus, { 0, globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
-    Button plusFocusButton     { ButtonEnum::PlusFocus, { globalSquareButtonSize.x, globalSquareButtonSize.y }, globalSquareButtonSize, plusTexture_ptr };
-    Scene characterMenu        { { mainMenuButton, minusPhysiqueButton, plusPhysiqueButton, minusFocusButton, plusFocusButton }, {}, redBackgroundTexture_ptr };
+    sf::Text nameText          { "Example", globalFont, globalFontSize };
+    nameText.setPosition(0, 0);
+
+    Button minusPhysiqueButton { ButtonEnum::MinusPhysique,
+                               { 0, nameText.getPosition().y }, globalSquareButtonSize, minusTexture_ptr };
+    sf::Text physiqueText      { "Physique", globalFont, globalFontSize };
+    physiqueText.setPosition(minusPhysiqueButton.box.getPosition().x + globalSquareButtonSize.x, minusPhysiqueButton.box.getPosition().y);
+    Button plusPhysiqueButton  { ButtonEnum::PlusPhysique,
+                               { physiqueText.getPosition().x + physiqueText.getGlobalBounds().width, minusPhysiqueButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+
+    Button minusFocusButton    { ButtonEnum::MinusFocus,
+                               { 0, globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
+    sf::Text focusText         { "Focus", globalFont, globalFontSize };
+    focusText.setPosition(minusFocusButton.box.getPosition().x + globalSquareButtonSize.x, minusFocusButton.box.getPosition().y);
+    Button plusFocusButton     { ButtonEnum::PlusFocus,
+                               { focusText.getPosition().x + focusText.getGlobalBounds().width, minusFocusButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+
+    Button minusEnduranceButton{ ButtonEnum::MinusEndurance,
+                               { 0, globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
+    sf::Text enduranceText     { "Endurance", globalFont, globalFontSize };
+    enduranceText.setPosition(minusEnduranceButton.box.getPosition().x + globalSquareButtonSize.x, minusEnduranceButton.box.getPosition().y);
+    Button plusEnduranceButton { ButtonEnum::PlusEndurance,
+                               { enduranceText.getPosition().x + enduranceText.getGlobalBounds().width, minusEnduranceButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+
+    Button minusSpeedButton    { ButtonEnum::MinusSpeed,
+                               { 0, globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
+    sf::Text speedText         { "Speed", globalFont, globalFontSize };
+    speedText.setPosition(minusSpeedButton.box.getPosition().x + globalSquareButtonSize.x, minusSpeedButton.box.getPosition().y);
+    Button plusSpeedButton     { ButtonEnum::PlusSpeed,
+                               { speedText.getPosition().x + speedText.getGlobalBounds().width, minusSpeedButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+
+    Scene characterMenu        { { mainMenuButton, minusPhysiqueButton, plusPhysiqueButton, minusFocusButton, plusFocusButton, minusEnduranceButton, plusEnduranceButton, minusSpeedButton, plusSpeedButton },
+                               { nameText, physiqueText, focusText, enduranceText, speedText }, redBackgroundTexture_ptr };
 
 
     Scene *currentScene = &mainMenu;
     Button *currentButton = nullptr;
+    CharacterCreation creator;
+    LevelUp leveler;
+    Character player;
+    Character opponent;
     while (mainWindow.isOpen())
     {
         sf::Event event;
@@ -104,6 +135,8 @@ int main()
                     {
                         case ButtonEnum::NewGame:
                             currentScene = &characterMenu;
+                            player { "DEFAULT NAME" };
+                            creator { player, 5 };
                             break;
                     }
                 }
@@ -130,6 +163,30 @@ int main()
                 {
                     case ButtonEnum::MainMenu:
                         currentScene = &mainMenu;
+                        break;
+                    case ButtonEnum::PlusPhysique:
+                        creator.increasePhysique();
+                        break;
+                    case ButtonEnum::PlusFocus:
+                        creator.increaseFocus();
+                        break;
+                    case ButtonEnum::PlusEndurance:
+                        creator.increaseEndurance();
+                        break;
+                    case ButtonEnum::PlusSpeed:
+                        creator.increaseSpeed();
+                        break;
+                    case ButtonEnum::MinusPhysique:
+                        creator.decreasePhysique();
+                        break;
+                    case ButtonEnum::MinusFocus:
+                        creator.decreaseFocus();
+                        break;
+                    case ButtonEnum::MinusEndurance:
+                        creator.decreaseEndurance();
+                        break;
+                    case ButtonEnum::MinusSpeed:
+                        creator.decreaseSpeed();
                         break;
                 }
             }
