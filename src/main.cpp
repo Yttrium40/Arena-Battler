@@ -117,18 +117,18 @@ int main()
             }
             if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Left))
             {
-                if ((*state.getScene()).getClickedButton(event, state.getButtonRef()))
+                if (state.getScene()->getClickedButton(event, state.getButtonRef()))
                 {
                     std::cout << "Button pressed!\n";
-                    (*state.getButton()).setClicked();
+                    state.getButton()->setClicked();
                 }
             }
             if ((event.type == sf::Event::MouseButtonReleased) && (event.mouseButton.button == sf::Mouse::Left))
             {
                 if (state.getButton() != nullptr)
                 {
-                    (*state.getButton()).setUnclicked();
-                    switch ((*state.getButton()).getId())
+                    state.getButton()->setUnclicked();
+                    switch (state.getButton()->getId())
                     {
                         case ButtonEnum::NewGame:
                             state.setScene(characterMenu);
@@ -147,43 +147,67 @@ int main()
             }
             if ((event.type == sf::Event::MouseButtonPressed) && (event.mouseButton.button == sf::Mouse::Left))
             {
-                if ((*state.getScene()).getClickedButton(event, state.getButtonRef()))
+                if (state.getScene()->getClickedButton(event, state.getButtonRef()))
                 {
                     std::cout << "Button pressed!\n";
-                    (*state.getButton()).setClicked();
+                    state.getButton()->setClicked();
                 }
             }
             if ((event.type == sf::Event::MouseButtonReleased) && (event.mouseButton.button == sf::Mouse::Left))
             {
-                (*state.getButton()).setUnclicked();
-                switch ((*state.getButton()).getId())
+                state.getButton()->setUnclicked();
+                switch (state.getButton()->getId())
                 {
                     case ButtonEnum::MainMenu:
                         state.setScene(mainMenu);
                         break;
                     case ButtonEnum::PlusPhysique:
-                        (*state.getCreator()).increasePhysique();
+                        if (state.getCreator()->getPoints() > 0)
+                        {
+                            state.getCreator()->increasePhysique();
+                        }
                         break;
                     case ButtonEnum::PlusFocus:
-                        (*state.getCreator()).increaseFocus();
+                        if (state.getCreator()->getPoints() > 0)
+                        {
+                            state.getCreator()->increaseFocus();
+                        }
                         break;
                     case ButtonEnum::PlusEndurance:
-                        (*state.getCreator()).increaseEndurance();
+                        if (state.getCreator()->getPoints() > 0)
+                        {
+                            state.getCreator()->increaseEndurance();
+                        }
                         break;
                     case ButtonEnum::PlusSpeed:
-                        (*state.getCreator()).increaseSpeed();
+                        if (state.getCreator()->getPoints() > 1 && state.getPlayer()->getSpeed() < 3)
+                        {
+                            state.getCreator()->increaseSpeed();
+                        }
                         break;
                     case ButtonEnum::MinusPhysique:
-                        (*state.getCreator()).decreasePhysique();
+                        if (state.getPlayer()->getPhysique() > 0)
+                        {
+                            state.getCreator()->decreasePhysique();
+                        }
                         break;
                     case ButtonEnum::MinusFocus:
-                        (*state.getCreator()).decreaseFocus();
+                        if (state.getPlayer()->getFocus() > 0)
+                        {
+                            state.getCreator()->decreaseFocus();
+                        }
                         break;
                     case ButtonEnum::MinusEndurance:
-                        (*state.getCreator()).decreaseEndurance();
+                        if (state.getPlayer()->getEndurance() > 0)
+                        {
+                            state.getCreator()->decreaseEndurance();
+                        }
                         break;
                     case ButtonEnum::MinusSpeed:
-                        (*state.getCreator()).decreaseSpeed();
+                        if (state.getPlayer()->getSpeed() > 1)
+                        {
+                            state.getCreator()->decreaseSpeed();
+                        }
                         break;
                 }
             }
