@@ -15,6 +15,8 @@
 
 sf::Font globalFont;
 unsigned int globalFontSize { 16 };
+unsigned int smallMargin { 20 };
+unsigned int largeMargin { 50 };
 sf::Vector2f globalWindowSize { 1000, 750 };
 sf::Vector2f globalButtonSize { 200, 50 };
 sf::Vector2f globalSquareButtonSize { 25, 25 };
@@ -73,32 +75,32 @@ int main()
     nameText.setPosition(0, 0);
 
     Button minusPhysiqueButton { ButtonEnum::MinusPhysique,
-                               { 0, nameText.getPosition().y + globalFontSize }, globalSquareButtonSize, minusTexture_ptr };
+                               { 0, nameText.getPosition().y + globalFontSize + largeMargin }, globalSquareButtonSize, minusTexture_ptr };
     sf::Text physiqueText      { "Physique", globalFont, globalFontSize };
-    physiqueText.setPosition(minusPhysiqueButton.box.getPosition().x + globalSquareButtonSize.x, minusPhysiqueButton.box.getPosition().y);
+    physiqueText.setPosition(minusPhysiqueButton.box.getPosition().x + globalSquareButtonSize.x + smallMargin, minusPhysiqueButton.box.getPosition().y);
     Button plusPhysiqueButton  { ButtonEnum::PlusPhysique,
-                               { physiqueText.getPosition().x + physiqueText.getGlobalBounds().width, minusPhysiqueButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+                               { physiqueText.getPosition().x + physiqueText.getGlobalBounds().width + smallMargin, minusPhysiqueButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
 
     Button minusFocusButton    { ButtonEnum::MinusFocus,
-                               { 0, minusPhysiqueButton.box.getPosition().y + globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
+                               { 0, minusPhysiqueButton.box.getPosition().y + globalSquareButtonSize.y + smallMargin }, globalSquareButtonSize, minusTexture_ptr };
     sf::Text focusText         { "Focus", globalFont, globalFontSize };
-    focusText.setPosition(minusFocusButton.box.getPosition().x + globalSquareButtonSize.x, minusFocusButton.box.getPosition().y);
+    focusText.setPosition(minusFocusButton.box.getPosition().x + globalSquareButtonSize.x + smallMargin, minusFocusButton.box.getPosition().y);
     Button plusFocusButton     { ButtonEnum::PlusFocus,
-                               { focusText.getPosition().x + focusText.getGlobalBounds().width, minusFocusButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+                               { focusText.getPosition().x + focusText.getGlobalBounds().width + smallMargin, minusFocusButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
 
     Button minusEnduranceButton{ ButtonEnum::MinusEndurance,
-                               { 0, minusFocusButton.box.getPosition().y + globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
+                               { 0, minusFocusButton.box.getPosition().y + globalSquareButtonSize.y + smallMargin }, globalSquareButtonSize, minusTexture_ptr };
     sf::Text enduranceText     { "Endurance", globalFont, globalFontSize };
-    enduranceText.setPosition(minusEnduranceButton.box.getPosition().x + globalSquareButtonSize.x, minusEnduranceButton.box.getPosition().y);
+    enduranceText.setPosition(minusEnduranceButton.box.getPosition().x + globalSquareButtonSize.x + smallMargin, minusEnduranceButton.box.getPosition().y);
     Button plusEnduranceButton { ButtonEnum::PlusEndurance,
-                               { enduranceText.getPosition().x + enduranceText.getGlobalBounds().width, minusEnduranceButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+                               { enduranceText.getPosition().x + enduranceText.getGlobalBounds().width + smallMargin, minusEnduranceButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
 
     Button minusSpeedButton    { ButtonEnum::MinusSpeed,
-                               { 0, minusEnduranceButton.box.getPosition().y + globalSquareButtonSize.y }, globalSquareButtonSize, minusTexture_ptr };
+                               { 0, minusEnduranceButton.box.getPosition().y + globalSquareButtonSize.y + smallMargin }, globalSquareButtonSize, minusTexture_ptr };
     sf::Text speedText         { "Speed", globalFont, globalFontSize };
-    speedText.setPosition(minusSpeedButton.box.getPosition().x + globalSquareButtonSize.x, minusSpeedButton.box.getPosition().y);
+    speedText.setPosition(minusSpeedButton.box.getPosition().x + globalSquareButtonSize.x + smallMargin, minusSpeedButton.box.getPosition().y);
     Button plusSpeedButton     { ButtonEnum::PlusSpeed,
-                               { speedText.getPosition().x + speedText.getGlobalBounds().width, minusSpeedButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
+                               { speedText.getPosition().x + speedText.getGlobalBounds().width + smallMargin, minusSpeedButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
 
     Scene characterMenu        { { mainMenuButton, minusPhysiqueButton, plusPhysiqueButton, minusFocusButton, plusFocusButton, minusEnduranceButton, plusEnduranceButton, minusSpeedButton, plusSpeedButton },
                                { nameText, physiqueText, focusText, enduranceText, speedText }, redBackgroundTexture_ptr };
