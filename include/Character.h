@@ -8,8 +8,7 @@
 class LevelUp;
 class CharacterCreation;
 
-class Character
-{
+class Character {
     friend class LevelUp;
     friend class CharacterCreation;
 

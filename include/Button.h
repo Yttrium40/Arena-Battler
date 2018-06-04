@@ -7,8 +7,7 @@
 # include "global.h"
 # include "ButtonEnum.h"
 
-class Button : public sf::Drawable
-{
+class Button : public sf::Drawable {
 private:
     std::shared_ptr<sf::Texture> background;
     std::shared_ptr<sf::Texture> backgroundClicked = nullptr;

@@ -6,8 +6,7 @@
 # include <cassert>
 # include "Character.h"
 
-class LevelUp
-{
+class LevelUp {
 protected:
     Character &character;
     int points = 0;

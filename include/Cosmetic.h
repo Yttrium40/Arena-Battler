@@ -10,8 +10,7 @@
 # include <utility>
 # include "Character.h"
 
-class Cosmetic
-{
+class Cosmetic {
 private:
     static std::mt19937 rng;
 

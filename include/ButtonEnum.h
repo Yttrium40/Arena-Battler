@@ -1,8 +1,7 @@
 # ifndef BUTTONENUM_H
 # define BUTTONENUM_H
 
-enum class ButtonEnum
-{
+enum class ButtonEnum {
     MainMenu,
     NewGame,
     Continue,

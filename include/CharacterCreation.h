@@ -4,8 +4,7 @@
 # include <string>
 # include "LevelUp.h"
 
-class CharacterCreation : public LevelUp
-{
+class CharacterCreation : public LevelUp {
 public:
     CharacterCreation(Character &p_character, int p_points);
 

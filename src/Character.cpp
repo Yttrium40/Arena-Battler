@@ -1,35 +1,28 @@
 # include "Character.h"
 
 Character::Character(std::string p_name)
-: name { p_name }
-{
-}
+: name { p_name } {}
 
-int32_t Character::damageStamina(int damage)
-{
+int32_t Character::damageStamina(int damage) {
     stamina -= damage;
     return getStamina();
 }
-int32_t Character::damageMana(int damage)
-{
+int32_t Character::damageMana(int damage) {
     mana -= damage;
     return getMana();
 }
-int32_t Character::damageWill(int damage)
-{
+int32_t Character::damageWill(int damage) {
     will -= damage;
     return getWill();
 }
 
-void Character::recoverPartial()
-{
+void Character::recoverPartial() {
     stamina = getPhysique()*5  + 5;
     mana    = getFocus()*5     + 5;
     // TODO find out how this works
 }
 
-void Character::recoverFull()
-{
+void Character::recoverFull() {
     stamina = getPhysique()*5  + 5;
     mana    = getFocus()*5     + 5;
     will    = getEndurance()*5 + 5;

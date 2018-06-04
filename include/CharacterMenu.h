@@ -8,8 +8,7 @@
 # include <memory>
 # include <utility>
 
-class CharacterMenu : public Scene
-{
+class CharacterMenu : public Scene {
 private:
     Character &character;
 
@@ -18,7 +17,7 @@ private:
 public:
     std::unique_ptr<LevelUp> adjuster = nullptr;
 
-    CharacterMenu(std::vector<Button> p_buttons, std::vector<sf::Text> p_texts,
+    CharacterMenu(std::vector<Button*> p_buttons, std::vector<sf::Text*> p_texts,
         std::shared_ptr<sf::Texture> p_background, Character &p_character,
         std::unique_ptr<LevelUp> p_adjuster);
 

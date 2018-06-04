@@ -1,11 +1,8 @@
 # include "GameState.h"
 
-GameState::GameState()
-{
-}
+GameState::GameState() {}
 
-void GameState::clearState()
-{
+void GameState::clearState() {
     scene = nullptr;
     button = nullptr;
     creator = nullptr;
@@ -13,97 +10,74 @@ void GameState::clearState()
     player = nullptr;
     opponent = nullptr;
 }
-void GameState::clearScene()
-{
+void GameState::clearScene() {
     scene = nullptr;
 }
-void GameState::clearButton()
-{
+void GameState::clearButton() {
     button = nullptr;
 }
-void GameState::clearCreator()
-{
+void GameState::clearCreator() {
     creator = nullptr;
 }
-void GameState::clearLeveler()
-{
+void GameState::clearLeveler() {
     leveler = nullptr;
 }
-void GameState::clearPlayer()
-{
+void GameState::clearPlayer() {
     player = nullptr;
 }
-void GameState::clearOpponent()
-{
+void GameState::clearOpponent() {
     opponent = nullptr;
 }
 
-void GameState::setScene(Scene &s)
-{
+void GameState::setScene(Scene &s) {
     scene = &s;
 }
-void GameState::setButton(Button &b)
-{
+void GameState::setButton(Button &b) {
     button = &b;
 }
-void GameState::setCreator(CharacterCreation &c)
-{
+void GameState::setCreator(CharacterCreation &c) {
     creator = std::make_unique<CharacterCreation>(c);
 }
-void GameState::setCreator(CharacterCreation c)
-{
+void GameState::setCreator(CharacterCreation c) {
     creator = std::make_unique<CharacterCreation>(c);
 }
-void GameState::setLeveler(LevelUp &l)
-{
+void GameState::setLeveler(LevelUp &l) {
     leveler = std::make_unique<LevelUp>(l);
 }
-void GameState::setLeveler(LevelUp l)
-{
+void GameState::setLeveler(LevelUp l) {
     leveler = std::make_unique<LevelUp>(l);
 }
-void GameState::setPlayer(Character &p)
-{
+void GameState::setPlayer(Character &p) {
     player = std::make_unique<Character>(p);
 }
-void GameState::setPlayer(Character p)
-{
+void GameState::setPlayer(Character p) {
     player = std::make_unique<Character>(p);
 }
-void GameState::setOpponent(Character &o)
-{
+void GameState::setOpponent(Character &o) {
     opponent = std::make_unique<Character>(o);
 }
-void GameState::setOpponent(Character o)
-{
+void GameState::setOpponent(Character o) {
     opponent = std::make_unique<Character>(o);
 }
 
-Scene * GameState::getScene()
-{
+Scene * GameState::getScene() {
     return scene;
 }
-Button * GameState::getButton()
-{
+Button * GameState::getButton() {
     return button;
 }
-Button *& GameState::getButtonRef()
-{
+Button *& GameState::getButtonRef() {
     return button;
 }
-CharacterCreation * GameState::getCreator()
-{
+CharacterCreation * GameState::getCreator() {
     return creator.get();
 }
-LevelUp * GameState::getLeveler()
-{
+LevelUp * GameState::getLeveler() {
     return leveler.get();
 }
-Character * GameState::getPlayer()
-{
+Character * GameState::getPlayer() {
     return player.get();
 }
-Character * GameState::getOpponent()
-{
+Character * GameState::getOpponent() {
     return opponent.get();
 }

@@ -1,8 +1,7 @@
 # ifndef BATTLE_H
 # define BATTLE_H
 
-class Battle
-{
+class Battle {
 private:
     Character &competitor1;
     Character &competitor2;

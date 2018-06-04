@@ -8,8 +8,7 @@
 # include "LevelUp.h"
 # include "Character.h"
 
-class GameState
-{
+class GameState {
 private:
     Scene *scene = nullptr;
     Button *button = nullptr;

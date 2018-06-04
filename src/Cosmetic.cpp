@@ -9,8 +9,7 @@ std::map<std::string, std::vector<std::string>> Cosmetic::weaponAttack;
 std::map<std::string, std::vector<std::string>> Cosmetic::elementOddity;
 std::map<std::string, std::vector<std::string>> Cosmetic::elementAttack;
 
-const std::vector<std::string> Cosmetic::fileNames
-{
+const std::vector<std::string> Cosmetic::fileNames {
     "race_appearance",
     "race_clothing",
     "weapon_appearance",
@@ -19,45 +18,35 @@ const std::vector<std::string> Cosmetic::fileNames
     "element_attack"
 };
 
-void Cosmetic::populateMaps()
-{
+void Cosmetic::populateMaps() {
     std::ifstream ifs;
     std::map<std::string, std::vector<std::string>> *currentMap = &raceAppearance;
     int count = 0;
-    for (const std::string &file : fileNames)
-    {
-        if (count == 1)
-        {
+    for (const std::string &file : fileNames) {
+        if (count == 1) {
             currentMap = &raceClothing;
         }
-        else if (count == 2)
-        {
+        else if (count == 2) {
             currentMap = &weaponAppearance;
         }
-        else if (count == 3)
-        {
+        else if (count == 3) {
             currentMap = &weaponAttack;
         }
-        else if (count == 4)
-        {
+        else if (count == 4) {
             currentMap = &elementOddity;
         }
-        else if (count == 5)
-        {
+        else if (count == 5) {
             currentMap = &elementAttack;
         }
         ifs.open("../resources/cosmetics/" + file + ".txt", std::ifstream::in);
         std::string head;
         std::string line;
-        while (std::getline(ifs, line))
-        {
-            if (!line.empty() && line[0] == '!')
-            {
+        while (std::getline(ifs, line)) {
+            if (!line.empty() && line[0] == '!') {
                 head = line.substr(1);
                 (*currentMap).insert(std::pair<std::string, std::vector<std::string>>(head, {}));
             }
-            else if (!line.empty())
-            {
+            else if (!line.empty()) {
                 (*currentMap).at(head).push_back(line);
             }
         }
@@ -66,13 +55,11 @@ void Cosmetic::populateMaps()
     }
 }
 
-Cosmetic::Cosmetic()
-{
+Cosmetic::Cosmetic() {
     populateMaps();
 }
 
-std::string Cosmetic::getRandomizedDescription(const Character &character) const
-{
+std::string Cosmetic::getRandomizedDescription(const Character &character) const {
     std::uniform_int_distribution<> dis0(0, raceAppearance.at(character.getRace()).size() - 1);
     const std::string &randomRaceAppearance = raceAppearance.at(character.getRace())[dis0(rng)];
 
