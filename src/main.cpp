@@ -26,9 +26,9 @@ int main() {
 
     sf::RenderWindow mainWindow { sf::VideoMode { globalWindowSize.x, globalWindowSize.y }, "Arena Battler", sf::Style::Titlebar | sf::Style::Close };
 
-    sf::Texture redBackgroundTexture;
-    redBackgroundTexture.loadFromFile("../resources/images/RedBackground.png");
-    auto redBackgroundTexture_ptr = std::make_shared<sf::Texture>(redBackgroundTexture);
+    sf::Texture backgroundTexture;
+    backgroundTexture.loadFromFile("../resources/images/background.png");
+    auto backgroundTexture_ptr = std::make_shared<sf::Texture>(backgroundTexture);
 
 
     // Main Menu
@@ -42,7 +42,7 @@ int main() {
 
     Button newGameButton { ButtonEnum::NewGame,
                          { globalWindowSize.x/2 - globalButtonSize.x/2, 0 }, globalButtonSize, newGameTexture_ptr, newGameClickedTexture_ptr };
-    Scene mainMenu       { { &newGameButton }, {}, redBackgroundTexture_ptr };
+    Scene mainMenu       { { &newGameButton }, {}, backgroundTexture_ptr };
 
 
     // Character Menu
@@ -112,7 +112,7 @@ int main() {
                                { minusSpeedButton.box.getPosition().x + smallMargin * 2, minusSpeedButton.box.getPosition().y }, globalSquareButtonSize, plusTexture_ptr };
 
     Scene characterMenu        { { &mainMenuButton, &minusPhysiqueButton, &plusPhysiqueButton, &minusFocusButton, &plusFocusButton, &minusEnduranceButton, &plusEnduranceButton, &minusSpeedButton, &plusSpeedButton },
-                               { &nameText, &physiqueText, &physiqueStat, &focusText, &focusStat, &enduranceText, &enduranceStat, &speedText, &speedStat }, redBackgroundTexture_ptr };
+                               { &nameText, &physiqueText, &physiqueStat, &focusText, &focusStat, &enduranceText, &enduranceStat, &speedText, &speedStat }, backgroundTexture_ptr };
 
 
     GameState state;
